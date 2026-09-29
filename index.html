@@ -178,6 +178,47 @@
   .legend-mini{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:8px; font-size:.72rem; color:var(--muted);}
   .legend-mini span{display:inline-flex; align-items:center; gap:4px;}
   .legend-mini i{width:12px; height:12px; border-radius:3px; display:inline-block;}
+  .cell.plain{background:#fdf8ea;}
+  .lines-overlay{position:absolute; top:0; left:0; pointer-events:none; z-index:1;}
+  .mini-compass{position:absolute; top:2px; right:2px; font-size:9px; font-weight:800; text-align:center; color:var(--forest-dk); background:rgba(255,253,246,.85); padding:1px 4px; border-radius:4px; line-height:1.15; z-index:5;}
+
+  .mission-row{display:flex; align-items:center; gap:12px; border:1.5px solid var(--line); border-radius:12px; padding:12px; margin-bottom:10px; cursor:pointer; background:#fffdf6;}
+  .mission-row:active{transform:scale(.99);}
+  .mission-row .num{width:34px; height:34px; border-radius:50%; background:var(--forest); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; flex-shrink:0; font-size:.85rem;}
+  .mission-row .mtitle{font-weight:700; font-size:.92rem;}
+  .mission-row .msub{font-size:.76rem; color:var(--muted);}
+
+  .wtable{width:100%; border-collapse:collapse; margin-bottom:14px; font-size:.86rem;}
+  .wtable th, .wtable td{border:1px solid var(--line); padding:8px; text-align:left; vertical-align:top;}
+  .wtable th{background:var(--paper2); font-weight:700;}
+
+  .qcheck{border:1.5px solid var(--line); border-radius:12px; padding:12px; margin-bottom:12px; background:#fffdf6;}
+  .qc-head{display:flex; align-items:center; gap:8px; margin-bottom:8px; font-weight:600; font-size:.9rem; line-height:1.3;}
+  .qc-num{background:var(--forest); color:#fff; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.72rem; font-weight:800; flex-shrink:0;}
+  .qc-text{flex:1;}
+  .qc-input{width:100%; border:1.5px solid var(--line); border-radius:8px; padding:8px; font-family:'Lexend'; font-size:.88rem; resize:vertical; margin-bottom:8px;}
+  .qc-actions{margin-bottom:8px;}
+  .qc-answer{background:var(--paper2); border-radius:8px; padding:10px; margin-top:6px;}
+  .qc-model{font-size:.85rem; margin-bottom:8px; line-height:1.45;}
+  .qc-mark{display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+  .marked-label{font-size:.76rem; color:var(--muted); font-weight:700;}
+  .btn.small{padding:6px 10px; font-size:.78rem;}
+
+  .doodle-grid{margin-bottom:6px;}
+  .doodle-row{display:flex; align-items:center; gap:10px; border:1.5px solid var(--line); border-radius:12px; padding:8px 10px; margin-bottom:8px; flex-wrap:wrap;}
+  .doodle-label{font-weight:700; width:84px; flex-shrink:0; font-size:.82rem;}
+  .doodle-canvas{border:1.5px dashed var(--line); border-radius:8px; background:#fff; touch-action:none;}
+  .doodle-actions{display:flex; gap:6px; flex-wrap:wrap;}
+  .doodle-ref{width:40px; height:40px; display:none; align-items:center; justify-content:center; background:var(--paper2); border-radius:8px;}
+  .doodle-ref svg{width:32px; height:32px;}
+
+  .tri-table{width:100%; border-collapse:collapse; margin:10px 0 14px;}
+  .tri-table td, .tri-table th{padding:7px 6px; font-size:.8rem; border-bottom:1px solid var(--line);}
+  .tri-table th{text-align:center; color:var(--muted);}
+  .tri-btn{width:22px; height:22px; border-radius:5px; border:2px solid var(--line); cursor:pointer; background:#fff;}
+  .tri-btn.sel-sicher{background:var(--ok); border-color:var(--ok);}
+  .tri-btn.sel-fast{background:var(--gold); border-color:var(--gold);}
+  .tri-btn.sel-ueben{background:var(--bad); border-color:var(--bad);}
 
   .letterbtns, .numbtns{display:flex; gap:6px; flex-wrap:wrap; justify-content:center; margin-bottom:8px;}
   .pickbtn{
@@ -259,6 +300,9 @@ const SIGNS = [
   {id:'campingplatz', name:'Campingplatz', cat:'sonstige', svg: ico(`<circle cx="50" cy="50" r="32"/><path d="M36 66 L50 32 L64 66 Z"/>`)},
   {id:'brunnen', name:'Brunnen', cat:'sonstige', svg: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="6"><circle cx="50" cy="54" r="16"/><circle cx="50" cy="54" r="4" fill="currentColor"/></svg>`},
   {id:'turm', name:'Turm', cat:'sonstige', svg: ico(`<circle cx="50" cy="54" r="20" stroke-width="9"/>`)},
+  {id:'spielplatz', name:'Spielplatz', cat:'sonstige', svg: ico(`<line x1="28" y1="20" x2="28" y2="80"/><line x1="72" y1="20" x2="72" y2="80"/><line x1="28" y1="20" x2="72" y2="20"/><line x1="50" y1="34" x2="50" y2="56" stroke-width="4"/><rect x="38" y="56" width="24" height="8" fill="currentColor"/>`)},
+  {id:'bibliothek', name:'Bibliothek', cat:'gebaeude', svg: ico(`<path d="M50 30 C36 24 20 27 20 27 L20 74 C20 74 36 71 50 78 C64 71 80 74 80 74 L80 27 C80 27 64 24 50 30 Z"/><line x1="50" y1="30" x2="50" y2="78"/>`)},
+  {id:'stadion', name:'Stadion', cat:'sonstige', svg: ico(`<ellipse cx="50" cy="50" rx="38" ry="24" stroke-width="8"/>`)},
 ];
 const SIGN_BY_ID = Object.fromEntries(SIGNS.map(s=>[s.id,s]));
 
@@ -339,11 +383,17 @@ const MASSSTAB_Q = [
 /* ============ STATE / STORAGE ============ */
 const STORE_KEY = 'ada_sach_v1';
 function loadStore(){
-  try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || defaultStore(); }
+  try{
+    const s = JSON.parse(localStorage.getItem(STORE_KEY));
+    if(!s) return defaultStore();
+    const d = defaultStore();
+    s.scores = Object.assign(d.scores, s.scores||{});
+    return s;
+  }
   catch(e){ return defaultStore(); }
 }
 function defaultStore(){
-  return {scores:{himmel:{c:0,t:0}, zeichen:{c:0,t:0}, grid:{c:0,t:0}, bildarten:{c:0,t:0}, arten:{c:0,t:0}, massstab:{c:0,t:0}}};
+  return {scores:{himmel:{c:0,t:0}, zeichen:{c:0,t:0}, grid:{c:0,t:0}, bildarten:{c:0,t:0}, arten:{c:0,t:0}, massstab:{c:0,t:0}, missionen:{c:0,t:0}, probe:{c:0,t:0}}};
 }
 let STORE = loadStore();
 function saveStore(){ localStorage.setItem(STORE_KEY, JSON.stringify(STORE)); }
@@ -367,6 +417,7 @@ function render(html){ app.innerHTML = html; window.scrollTo(0,0); }
 
 /* ============ MENU ============ */
 const MODULES = [
+  {id:'missionen', icon:'📖', title:'Missionen (Schreiben)', desc:'Wie im Übungsheft: Fragen selbst beantworten & kontrollieren'},
   {id:'himmel', icon:'🧭', title:'Himmelsrichtungen', desc:'Norden, Osten, Süden, Westen auf der Karte'},
   {id:'zeichen', icon:'🗺️', title:'Kartenzeichen', desc:'Alle Legende-Symbole lernen & üben'},
   {id:'grid', icon:'📐', title:'Planquadrate', desc:'Koordinaten wie A,3 auf dem Stadtplan finden'},
@@ -398,6 +449,13 @@ function screenMenu(){
         <div class="desc">20 gemischte Fragen aus allen Themen – wie in der Lernzielkontrolle</div>
       </div>
     </div>
+    <div class="exam-card" style="background:linear-gradient(135deg, #8a5a1f, var(--gold)); color:#3a2a08;" onclick="openModule('probe')">
+      <div class="icon">📝</div>
+      <div>
+        <div class="title">Probe-Arbeit (schriftlich)</div>
+        <div class="desc">Wie in der Schule: offene Fragen selbst schreiben, dann kontrollieren – 40 Punkte</div>
+      </div>
+    </div>
     <div class="menu-grid">${cards}</div>
     <footer class="foot"><button onclick="resetAll()">Fortschritt zurücksetzen</button></footer>
   `);
@@ -414,6 +472,8 @@ function openModule(id){
   if(id==='bildarten') return quizHome('bildarten');
   if(id==='arten') return quizHome('arten');
   if(id==='massstab') return quizHome('massstab');
+  if(id==='missionen') return missionsHome();
+  if(id==='probe') return probeHome();
 }
 
 function topbar(title){
@@ -922,6 +982,572 @@ function finishExam(){
       ${weakest ? `<div style="text-align:center;"><button class="btn gold" onclick="openModule('${weakest}')">Schwäche gezielt üben: ${catNames[weakest]}</button></div>` : ''}
       <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:12px;">
         <button class="btn secondary" onclick="startExam()">Neue Prüfung</button>
+        <button class="btn" onclick="screenMenu()">Zum Menü</button>
+      </div>
+    </div>
+  `);
+}
+
+/* ============ MISSIONEN (Schreib-Training, aus dem Übungsheft) ============ */
+const TRI_ROWS = [
+  'erklären, was eine Karte ist',
+  'Schrägbild, Draufsicht und Plan unterscheiden',
+  'wichtige Kartenzeichen erkennen',
+  'ein Planquadrat wie D4 finden',
+  'einen Stadtplan lesen',
+  'Stadtplan, Straßenkarte, Seekarte und topografische Karte unterscheiden',
+];
+const MISSION_LIST = [
+  {id:'m1', num:1, title:'Eine Landkarte verstehen', sub:'Grundregeln'},
+  {id:'m2', num:2, title:'Vom Bild zum Plan', sub:'Schrägbild – Draufsicht – Karte'},
+  {id:'m3', num:3, title:'Kartenzeichen: Verkehr & Wege', sub:'Eisenbahn, Straße, Weg, ...'},
+  {id:'m4', num:4, title:'Kartenzeichen: Gebäude & Orte', sub:'Kirche, Burg, Denkmal, ...'},
+  {id:'m5', num:5, title:'Kartenzeichen: Landschaft & Wasser', sub:'Wald, Wiese, Fluss, ...'},
+  {id:'mc', num:'★', title:'Kartenzeichen-Challenge', sub:'Alles gemischt üben'},
+  {id:'m6', num:6, title:'Planquadrate sicher finden', sub:'Buchstabe + Zahl'},
+  {id:'m7', num:7, title:'Einen Stadtplan lesen', sub:'Neue Übungskarte'},
+  {id:'mini', num:'i', title:'Orientierung & Maßstab', sub:'Kompass, Norden, Maßstab'},
+  {id:'m8', num:8, title:'Vom Luftbild zur Karte', sub:'Schrägluftbild – Senkrecht – Karte'},
+  {id:'m9', num:9, title:'Welche Karte brauche ich?', sub:'Stadtplan, Straßenkarte, ...'},
+  {id:'fest', num:'✓', title:'10 Regeln & Festigen', sub:'Alles zusammenfassen'},
+];
+
+/* ---- reusable question/answer self-check block ---- */
+function qCheckHTML(id, cat, num, q, answer, points){
+  return `<div class="qcheck" id="qc_${id}" data-points="${points||0}">
+    <div class="qc-head"><span class="qc-num">${num}</span><span class="qc-text">${q}</span>${points?`<span class="pointschip">${points} P</span>`:''}</div>
+    <textarea class="qc-input" id="in_${id}" rows="2" placeholder="Deine Antwort..."></textarea>
+    <div class="qc-actions"><button class="btn secondary" onclick="revealAnswer('${id}')">Antwort prüfen</button></div>
+    <div class="qc-answer" id="ans_${id}" style="display:none;">
+      <div class="qc-model"><b>Musterantwort:</b> ${answer}</div>
+      <div class="qc-mark">
+        <button class="btn" style="background:var(--ok)" onclick="markSelf('${id}','${cat}', true)">✓ Richtig</button>
+        <button class="btn" style="background:var(--bad)" onclick="markSelf('${id}','${cat}', false)">✗ Nochmal üben</button>
+        <span id="marked_${id}" class="marked-label"></span>
+      </div>
+    </div>
+  </div>`;
+}
+function qIconCheckHTML(id, cat, num, signId, points){
+  const s = SIGN_BY_ID[signId];
+  return `<div class="qcheck" id="qc_${id}" data-points="${points||0}">
+    <div class="qc-head"><span class="qc-num">${num}</span><span class="qc-text">Wie heißt dieses Zeichen?</span>${points?`<span class="pointschip">${points} P</span>`:''}</div>
+    <div class="flash-icon" style="width:76px; height:76px; margin:4px 0 10px;">${s.svg}</div>
+    <textarea class="qc-input" id="in_${id}" rows="1" placeholder="Deine Antwort..."></textarea>
+    <div class="qc-actions"><button class="btn secondary" onclick="revealAnswer('${id}')">Antwort prüfen</button></div>
+    <div class="qc-answer" id="ans_${id}" style="display:none;">
+      <div class="qc-model"><b>Richtig:</b> ${s.name}</div>
+      <div class="qc-mark">
+        <button class="btn" style="background:var(--ok)" onclick="markSelf('${id}','${cat}', true)">✓ Richtig</button>
+        <button class="btn" style="background:var(--bad)" onclick="markSelf('${id}','${cat}', false)">✗ Nochmal üben</button>
+        <span id="marked_${id}" class="marked-label"></span>
+      </div>
+    </div>
+  </div>`;
+}
+function qMultiIconCheckHTML(id, cat, num, iconIds, points){
+  return `<div class="qcheck" id="qc_${id}" data-points="${points||0}">
+    <div class="qc-head"><span class="qc-num">${num}</span><span class="qc-text">Benenne die Kartenzeichen.</span>${points?`<span class="pointschip">${points} P</span>`:''}</div>
+    <div class="sheet-grid" style="margin-bottom:8px;">${iconIds.map(sid=>`<div class="sheet-item">${SIGN_BY_ID[sid].svg}</div>`).join('')}</div>
+    <textarea class="qc-input" id="in_${id}" rows="2" placeholder="Schreibe alle Namen der Reihe nach..."></textarea>
+    <div class="qc-actions"><button class="btn secondary" onclick="revealAnswer('${id}')">Antworten prüfen</button></div>
+    <div class="qc-answer" id="ans_${id}" style="display:none;">
+      <div class="qc-model"><b>Richtig:</b> ${iconIds.map(sid=>SIGN_BY_ID[sid].name).join(' – ')}</div>
+      <div class="qc-mark">
+        <button class="btn" style="background:var(--ok)" onclick="markSelf('${id}','${cat}', true)">✓ Alles/meistens richtig</button>
+        <button class="btn" style="background:var(--bad)" onclick="markSelf('${id}','${cat}', false)">✗ Nochmal üben</button>
+        <span id="marked_${id}" class="marked-label"></span>
+      </div>
+    </div>
+  </div>`;
+}
+function revealAnswer(id){ document.getElementById('ans_'+id).style.display='block'; }
+function markSelf(id, cat, correct){
+  recordAnswer(cat, correct);
+  const label = document.getElementById('marked_'+id);
+  label.textContent = correct ? '✓ gemerkt' : 'wird nochmal geübt';
+  label.style.color = correct ? 'var(--ok)' : 'var(--bad)';
+  const qc = document.getElementById('qc_'+id);
+  if(qc) qc.dataset.correct = correct ? '1' : '0';
+}
+function computePoints(){
+  let total=0, max=0;
+  document.querySelectorAll('.qcheck[data-points]').forEach(elx=>{
+    const p = Number(elx.dataset.points)||0;
+    max += p;
+    if(elx.dataset.correct==='1') total += p;
+  });
+  return {total, max};
+}
+function miniMC(id, cat, num, q, opts, correctIdx){
+  return `<div class="qcheck">
+    <div class="qc-head"><span class="qc-num">${num}</span><span class="qc-text">${q}</span></div>
+    <div class="options" id="mmopt_${id}">
+      ${opts.map((o,i)=>`<div class="opt" onclick="answerMiniMC('${id}','${cat}',${i},${correctIdx}, this)">${o}</div>`).join('')}
+    </div>
+  </div>`;
+}
+function answerMiniMC(id, cat, chosen, correctIdx, elx){
+  const box = document.getElementById('mmopt_'+id);
+  const correct = chosen===correctIdx;
+  box.querySelectorAll('.opt').forEach((o,i)=>{ o.classList.add('disabled'); if(i===correctIdx) o.classList.add('correct'); });
+  if(!correct) elx.classList.add('wrong');
+  recordAnswer(cat, correct);
+}
+
+/* ---- doodle canvas ("Zeichne aus dem Kopf") ---- */
+function doodleRowHTML(id, label, signId){
+  return `<div class="doodle-row">
+    <div class="doodle-label">${label}</div>
+    <canvas id="cv_${id}" width="130" height="90" class="doodle-canvas"></canvas>
+    <div class="doodle-actions">
+      <button class="btn secondary small" onclick="clearDoodle('${id}')">Löschen</button>
+      <button class="btn gold small" onclick="toggleRef('${id}')">Vorlage</button>
+    </div>
+    <div class="doodle-ref" id="ref_${id}">${SIGN_BY_ID[signId].svg}</div>
+  </div>`;
+}
+function initDoodle(canvasId){
+  const cv = document.getElementById(canvasId);
+  if(!cv || cv._inited) return;
+  cv._inited = true;
+  const ctx = cv.getContext('2d');
+  ctx.strokeStyle = '#2b2620'; ctx.lineWidth = 3; ctx.lineCap='round'; ctx.lineJoin='round';
+  let drawing = false, last=null;
+  function pos(e){
+    const r = cv.getBoundingClientRect();
+    const t = e.touches && e.touches[0];
+    const cx = (t ? t.clientX : e.clientX) - r.left;
+    const cy = (t ? t.clientY : e.clientY) - r.top;
+    return [cx * cv.width/r.width, cy * cv.height/r.height];
+  }
+  function start(e){ drawing=true; last=pos(e); e.preventDefault(); }
+  function move(e){ if(!drawing) return; const p=pos(e); ctx.beginPath(); ctx.moveTo(last[0],last[1]); ctx.lineTo(p[0],p[1]); ctx.stroke(); last=p; e.preventDefault(); }
+  function end(){ drawing=false; }
+  cv.addEventListener('mousedown', start);
+  cv.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', end);
+  cv.addEventListener('touchstart', start, {passive:false});
+  cv.addEventListener('touchmove', move, {passive:false});
+  cv.addEventListener('touchend', end);
+}
+function clearDoodle(id){
+  const cv = document.getElementById('cv_'+id);
+  cv.getContext('2d').clearRect(0,0,cv.width,cv.height);
+}
+function toggleRef(id){
+  const elx = document.getElementById('ref_'+id);
+  elx.style.display = elx.style.display==='flex' ? 'none' : 'flex';
+}
+function initAllDoodles(){
+  document.querySelectorAll('canvas.doodle-canvas').forEach(cv=>initDoodle(cv.id));
+}
+
+/* ---- tri-state self-check (Start-Check / End-Check) ---- */
+function triTableHTML(prefix, rows){
+  return `<table class="tri-table">
+    <tr><th style="text-align:left;">Das kann ich ...</th><th>sicher</th><th>fast</th><th>üben</th></tr>
+    ${rows.map((r,i)=>`<tr><td>${r}</td>
+      <td style="text-align:center;"><button class="tri-btn" id="tri_${prefix}_${i}_sicher" onclick="setTri('${prefix}',${i},'sicher')"></button></td>
+      <td style="text-align:center;"><button class="tri-btn" id="tri_${prefix}_${i}_fast" onclick="setTri('${prefix}',${i},'fast')"></button></td>
+      <td style="text-align:center;"><button class="tri-btn" id="tri_${prefix}_${i}_ueben" onclick="setTri('${prefix}',${i},'ueben')"></button></td>
+    </tr>`).join('')}
+  </table>`;
+}
+function setTri(prefix, i, val){
+  localStorage.setItem(`ada_tri_${prefix}_${i}`, val);
+  setTriVisual(prefix, i, val);
+}
+function setTriVisual(prefix, i, val){
+  ['sicher','fast','ueben'].forEach(v=>{
+    const b = document.getElementById(`tri_${prefix}_${i}_${v}`);
+    if(b) b.classList.toggle('sel-'+v, v===val);
+  });
+}
+function restoreTri(prefix){
+  TRI_ROWS.forEach((_,i)=>{
+    const val = localStorage.getItem(`ada_tri_${prefix}_${i}`);
+    if(val) setTriVisual(prefix, i, val);
+  });
+}
+
+/* ---- generic reference grid (no terrain, always-visible labels) ---- */
+function renderRefGrid(cols, rows, pois, opts={}){
+  const cell = opts.cell || 44;
+  let cellsHTML = '';
+  for(const r of rows){ for(const c of cols){
+    cellsHTML += `<div class="cell plain" style="grid-column:${cols.indexOf(c)+1}; grid-row:${r};"></div>`;
+  }}
+  const poisHTML = pois.map(p=>{
+    const ci = cols.indexOf(p.col)+1, ri = p.row;
+    const sign = SIGN_BY_ID[p.icon];
+    return `<div class="poi" style="grid-column:${ci}; grid-row:${ri};">${sign.svg}<div class="poi-label">${p.name}</div></div>`;
+  }).join('');
+  const w = cols.length*cell, h = rows.length*cell;
+  const linesHTML = opts.lines ? `<svg class="lines-overlay" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${opts.lines.map(l=>`<path d="${l.d}" fill="none" stroke="${l.color}" stroke-width="${l.width||4}" stroke-dasharray="${l.dash||''}" stroke-linecap="round"/>`).join('')}</svg>` : '';
+  const compassHTML = opts.compass ? `<div class="mini-compass">N<br>↑</div>` : '';
+  return `
+  <div class="mapwrap">
+    <div class="colheaders"><div style="width:26px;"></div>${cols.map(c=>`<div style="width:${cell}px;">${c}</div>`).join('')}</div>
+    <div class="maprow">
+      <div class="rowheaders">${rows.map(r=>`<div style="height:${cell}px;">${r}</div>`).join('')}</div>
+      <div class="mapgrid" style="grid-template-columns:repeat(${cols.length},${cell}px); grid-template-rows:repeat(${rows.length},${cell}px); position:relative;">
+        ${cellsHTML}${linesHTML}${poisHTML}${compassHTML}
+      </div>
+    </div>
+  </div>`;
+}
+const M6_COLS = ['A','B','C','D','E','F'];
+const M6_ROWS = [1,2,3,4,5,6];
+const M6_POIS = [
+  {name:'Park', col:'A', row:1, icon:'gruenanlage'},
+  {name:'Schule', col:'C', row:1, icon:'schule'},
+  {name:'Bahnhof', col:'E', row:1, icon:'eisenbahn'},
+  {name:'See', col:'B', row:2, icon:'see'},
+  {name:'Kirche', col:'D', row:2, icon:'kirche'},
+  {name:'Rathaus', col:'F', row:2, icon:'oeffentlich'},
+  {name:'Spielplatz', col:'A', row:4, icon:'spielplatz'},
+  {name:'Parkplatz', col:'C', row:4, icon:'parkplatz'},
+  {name:'Schwimmbad', col:'E', row:4, icon:'schwimmbad'},
+  {name:'Burg', col:'B', row:5, icon:'burg'},
+  {name:'Bibliothek', col:'D', row:5, icon:'bibliothek'},
+  {name:'Stadion', col:'F', row:5, icon:'stadion'},
+];
+const M7_COLS = ['A','B','C','D','E'];
+const M7_ROWS = [1,2,3,4,5];
+const M7_POIS = [
+  {name:'Schule', col:'C', row:1, icon:'schule'},
+  {name:'Stadion', col:'E', row:1, icon:'stadion'},
+  {name:'Park', col:'A', row:2, icon:'gruenanlage'},
+  {name:'Kirche', col:'D', row:2, icon:'kirche'},
+  {name:'Bad', col:'A', row:3, icon:'schwimmbad'},
+  {name:'Rathaus', col:'E', row:3, icon:'oeffentlich'},
+  {name:'Bibliothek', col:'C', row:4, icon:'bibliothek'},
+  {name:'Bahnhof', col:'D', row:5, icon:'eisenbahn'},
+];
+const M7_LINES = [
+  {d:'M170,0 C150,60 195,90 175,150 C160,210 140,250 150,250', color:'#3f7ca6', width:6},
+  {d:'M0,35 L250,55', color:'#2b2620', width:5, dash:'8 6'},
+  {d:'M0,95 L250,150', color:'#c9962c', width:3},
+  {d:'M0,190 L250,90', color:'#c9962c', width:3},
+];
+
+function renderMissionPage(title, body){
+  render(`
+    <div class="topbar">
+      <button class="btn secondary" onclick="missionsHome()">← Missionen</button>
+      <h2 class="mod-title" style="margin:0;">${title}</h2>
+      <span></span>
+    </div>
+    <div class="card">${body}</div>
+    <div style="text-align:center;"><button class="btn" onclick="missionsHome()">Fertig – zurück zur Übersicht</button></div>
+  `);
+  initAllDoodles();
+}
+
+function missionsHome(){
+  const rowsHtml = MISSION_LIST.map(m=>`
+    <div class="mission-row" onclick="openMission('${m.id}')">
+      <div class="num">${m.num}</div>
+      <div><div class="mtitle">${m.title}</div><div class="msub">${m.sub}</div></div>
+    </div>`).join('');
+  render(`
+    ${topbar('📖 Missionen')}
+    <div class="card">
+      <p style="margin-top:0;">Nicht alles auf einmal. Bearbeite eine Mission, kontrolliere kurz, und übe nur das noch einmal, was noch wackelt. Ziel ist nicht Auswendiglernen, sondern erkennen, erklären und anwenden.</p>
+      <h3 style="margin-bottom:4px;">Start-Check</h3>
+      <p style="font-size:.82rem; color:var(--muted); margin-top:0;">Kreuze an, wie sicher du dich jetzt fühlst. Bei „10 Regeln &amp; Festigen" machst du denselben Check noch einmal.</p>
+      ${triTableHTML('start', TRI_ROWS)}
+    </div>
+    <div class="card">${rowsHtml}</div>
+    <div style="text-align:center;"><button class="btn gold" onclick="openModule('probe')">📝 Zur schriftlichen Probe-Arbeit →</button></div>
+  `);
+  restoreTri('start');
+}
+function openMission(id){
+  const map = {m1:missionM1, m2:missionM2, m3:missionM3, m4:missionM4, m5:missionM5, mc:missionMC, m6:missionM6, m7:missionM7, mini:missionMini, m8:missionM8, m9:missionM9, fest:missionFest};
+  (map[id]||missionsHome)();
+}
+
+function missionM1(){
+  const rows = [
+    ['1','Verkleinert','Auf einem Plan kann die Wirklichkeit nicht in echter Größe erscheinen. Sie wird kleiner dargestellt.'],
+    ['2','Maßstab','Der Maßstab gibt an, wie stark die Wirklichkeit verkleinert dargestellt ist.'],
+    ['3','Legende','Die Legende heißt auch Zeichenerklärung. Sie erklärt die Zeichen auf der Karte.'],
+    ['4','Planquadrate','Sie helfen beim schnellen Suchen. Die Spalten haben Buchstaben, die Zeilen Zahlen.'],
+    ['5','Orientierung','Auf der Landkarte ist Norden oben und Süden unten.'],
+  ];
+  const body = `
+    <p>Auf Adas Notizen stehen mehrere Grundregeln, die in einer Arbeit sehr gut abgefragt werden können.</p>
+    <table class="wtable"><tr><th>#</th><th>Begriff</th><th>Erklärung</th></tr>
+    ${rows.map(r=>`<tr><td>${r[0]}</td><td><b>${r[1]}</b></td><td>${r[2]}</td></tr>`).join('')}</table>
+    <div class="infobox"><b>Merksatz:</b> Eine Karte zeigt die Wirklichkeit verkleinert und vereinfacht. Eine Legende erklärt ihre Zeichen.</div>
+    <h3>Jetzt du</h3>
+    ${qCheckHTML('m1q1','missionen',1,'Warum muss die Wirklichkeit auf einer Karte verkleinert werden?','Weil die echte Landschaft viel zu groß ist, um in echter Größe auf ein Blatt Papier zu passen.')}
+    ${qCheckHTML('m1q2','missionen',2,'Wie heißt die Zeichenerklärung einer Karte?','Legende (auch: Zeichenerklärung).')}
+    ${qCheckHTML('m1q3','missionen',3,'Wozu helfen Planquadrate?','Sie helfen dabei, Orte auf der Karte schnell zu finden.')}
+    ${qCheckHTML('m1q4','missionen',4,'Ergänze: Oben ist ____. Unten ist ____.','Oben ist Norden. Unten ist Süden.')}
+  `;
+  renderMissionPage('Mission 1 · Eine Landkarte verstehen', body);
+}
+function missionM2(){
+  const body = `
+    <p>In deinen Blättern wird derselbe Ort unterschiedlich dargestellt. Genau das solltest du sicher unterscheiden können.</p>
+    <table class="wtable"><tr><th>Darstellung</th><th>Erklärung</th></tr>
+      <tr><td><b>Schrägbild</b></td><td>Du schaust schräg von oben. Man erkennt noch Seiten von Gebäuden.</td></tr>
+      <tr><td><b>Draufsicht / Senkrechtbild</b></td><td>Du schaust genau von oben. Dächer, Straßen und Flächen sind besonders gut zu erkennen.</td></tr>
+      <tr><td><b>Plan / Karte</b></td><td>Der Ort wird vereinfacht. Häuser, Wege, Wälder oder Gewässer werden durch Formen und Kartenzeichen dargestellt.</td></tr>
+    </table>
+    <h3>Kannst du es?</h3>
+    ${qCheckHTML('m2q1','missionen',1,'Du siehst ein Haus von schräg oben und erkennst auch seine Seitenwand. Welche Darstellung ist das?','Ein Schrägbild.')}
+    ${qCheckHTML('m2q2','missionen',2,'Warum ist ein Plan einfacher gezeichnet als ein echtes Foto?','Weil auf einem Plan alles vereinfacht wird – nur mit Formen und Kartenzeichen statt echten Details.')}
+    ${qCheckHTML('m2q3','missionen',3,'Schreibe die richtige Reihenfolge auf: Plan/Karte – Draufsicht – Schrägbild','Schrägbild → Draufsicht → Plan/Karte.')}
+    <div class="infobox"><b>Prüfungs-Tipp:</b> Suche zuerst nach Straßen, Fluss, großen Gebäuden und ihrer Lage zueinander. Dann erkennst du, welche Bilder zusammengehören.</div>
+  `;
+  renderMissionPage('Mission 2 · Vom Bild zum Plan', body);
+}
+function missionM3(){
+  const refIds = ['eisenbahn','autobahn','strasse','weg','pfad','bruecke'];
+  const detectiveIds = ['pfad','eisenbahn','bruecke','strasse'];
+  const doodleIds = ['autobahn','weg','pfad','bruecke'];
+  const body = `
+    <p>Diese Zeichen kommen in deinen Arbeitsblättern vor. Schau sie dir kurz an, decke danach die Namen ab und sage sie laut.</p>
+    <div class="sheet-grid">${refIds.map(id=>{const s=SIGN_BY_ID[id]; return `<div class="sheet-item">${s.svg}<div class="lbl">${s.name}</div></div>`;}).join('')}</div>
+    <h3>Zeichen-Detektiv – schreibe den Namen zum Zeichen</h3>
+    ${detectiveIds.map((id,i)=>qIconCheckHTML('m3d'+i,'missionen',i+1,id)).join('')}
+    <h3>Zeichne aus dem Kopf</h3>
+    <div class="doodle-grid">${doodleIds.map(id=>doodleRowHTML('m3draw_'+id, SIGN_BY_ID[id].name, id)).join('')}</div>
+    <div class="infobox"><b>Sicherheits-Check:</b> Kannst du erklären, wie sich Straße, Weg und Pfad im Kartenzeichen unterscheiden? Dann ist dieser Teil schon gut gefestigt.</div>
+  `;
+  renderMissionPage('Mission 3 · Kartenzeichen: Verkehr & Wege', body);
+}
+function missionM4(){
+  const refIds = ['haus','kirche','burg','ruine','denkmal','forsthaus','kapelle','leuchtturm'];
+  const blitzIds = shuffle(['kirche','denkmal','forsthaus','leuchtturm','burg','kapelle']);
+  const body = `
+    <p>Hier sind die Zeichen aus deinem Kartenzeichen-Blatt für Gebäude und besondere Orte.</p>
+    <div class="sheet-grid">${refIds.map(id=>{const s=SIGN_BY_ID[id]; return `<div class="sheet-item">${s.svg}<div class="lbl">${s.name}</div></div>`;}).join('')}</div>
+    <h3>Blitzrunde – schreibe die Bedeutung unter jedes Zeichen</h3>
+    ${blitzIds.map((id,i)=>qIconCheckHTML('m4b'+i,'missionen',i+1,id)).join('')}
+    <h3>Denk-Aufgaben</h3>
+    ${qCheckHTML('m4q1','missionen',1,'Welche zwei Kartenzeichen haben ein Kreuz?','Kirche und Kapelle.')}
+    ${qCheckHTML('m4q2','missionen',2,'Welches Zeichen würdest du auf einer Karte an der Küste erwarten?','Den Leuchtturm.')}
+    ${qCheckHTML('m4q3','missionen',3,'Nenne drei Zeichen, die einen besonderen Ort oder ein Gebäude zeigen.','Zum Beispiel: Haus, Kirche, Burg, Denkmal, Forsthaus oder Kapelle (3 davon reichen).')}
+    <div class="infobox"><b>Lerntrick:</b> Zeige mit dem Finger zufällig auf ein Zeichen. Wenn du es innerhalb von 3 Sekunden nennen kannst, ist es sicher.</div>
+  `;
+  renderMissionPage('Mission 4 · Kartenzeichen: Gebäude & Orte', body);
+}
+function missionM5(){
+  const refIds = ['nadelwald','laubwald','wiese','sumpf','acker','weinberg','see','fluss','bach','kanal'];
+  const orderIds = ['weinberg','wiese','sumpf','acker'];
+  const body = `
+    <p>Auch Landschaften werden nicht wie auf einem Foto gezeichnet, sondern mit wiederkehrenden Zeichen.</p>
+    <div class="sheet-grid">${refIds.map(id=>{const s=SIGN_BY_ID[id]; return `<div class="sheet-item">${s.svg}<div class="lbl">${s.name}</div></div>`;}).join('')}</div>
+    <h3>Jetzt ohne Spicken</h3>
+    ${qCheckHTML('m5q1','missionen',1,'Wie unterscheiden sich Nadelwald und Laubwald im Kartenzeichen?','Nadelwald wird mit spitzen Baum-/Dreiecksformen dargestellt, Laubwald mit runderen Bogenformen.')}
+    ${qCheckHTML('m5q2','missionen',2,'Nenne drei Kartenzeichen für Wasser.','Zum Beispiel: See, Fluss, Bach, Kanal (3 davon reichen).')}
+    <h3>Ordne zu: Wiese – Acker – Weinberg – Sumpf</h3>
+    ${orderIds.map((id,i)=>qIconCheckHTML('m5o'+i,'missionen',i+1,id)).join('')}
+    <div class="infobox"><b>Merksatz:</b> Die Legende macht aus Zeichen Informationen. Wenn du ein Zeichen nicht kennst, schaust du in die Zeichenerklärung.</div>
+  `;
+  renderMissionPage('Mission 5 · Kartenzeichen: Landschaft & Wasser', body);
+}
+function missionMC(){
+  const mixIds = shuffle(['kirche','pfad','nadelwald','see','eisenbahn','acker','denkmal','bruecke','laubwald','strasse','weinberg','bach']);
+  const doodleIds = ['kirche','nadelwald','laubwald','weinberg','eisenbahn','see'];
+  const body = `
+    <p>Mische jetzt die Gruppen. Das ist wichtiger, als immer nur ähnliche Zeichen direkt nebeneinander zu üben.</p>
+    ${mixIds.map((id,i)=>qIconCheckHTML('mcx'+i,'missionen',i+1,id)).join('')}
+    <h3>Zeichne aus dem Kopf</h3>
+    <div class="doodle-grid">${doodleIds.map(id=>doodleRowHTML('mcdraw_'+id, SIGN_BY_ID[id].name, id)).join('')}</div>
+    <div class="infobox"><b>Punkte für dich:</b> 10–12 sicher erkannte Zeichen: sehr sicher. 7–9: die markierten noch einmal ansehen. 0–6: Kartenzeichen-Seiten in kleinen Gruppen üben.</div>
+  `;
+  renderMissionPage('Kartenzeichen-Challenge', body);
+}
+function missionM6(){
+  const body = `
+    <div class="infobox"><b>So liest du ein Planquadrat:</b> Erst der Buchstabe der Spalte, dann die Zahl der Zeile. Beispiel: D4 bedeutet Spalte D und Zeile 4.</div>
+    ${renderRefGrid(M6_COLS, M6_ROWS, M6_POIS, {cell:44})}
+    <h3>Aufgaben</h3>
+    ${qCheckHTML('m6q1','missionen',1,'In welchem Planquadrat liegt die Schule?','C1.')}
+    ${qCheckHTML('m6q2','missionen',2,'Wo liegt die Kirche?','D2.')}
+    ${qCheckHTML('m6q3','missionen',3,'Was findest du in E4?','Das Schwimmbad.')}
+    ${qCheckHTML('m6q4','missionen',4,'Was liegt in B5?','Die Burg.')}
+    ${qCheckHTML('m6q5','missionen',5,'In welchem Quadrat ist das Rathaus?','F2.')}
+    ${qCheckHTML('m6q6','missionen',6,'Nenne zwei Orte in Zeile 5.','Zum Beispiel Burg (B5) und Bibliothek (D5) oder Stadion (F5).')}
+    <h3>Profi-Aufgaben</h3>
+    ${qCheckHTML('m6q7','missionen',7,'Welche beiden Orte liegen in Spalte F?','Rathaus (F2) und Stadion (F5).')}
+    ${qCheckHTML('m6q8','missionen',8,'Erkläre einem Kind, das Planquadrate noch nicht kennt, wie es D5 findet.','Erst die Spalte D suchen, dann die Zeile 5. Dort, wo sich beide treffen, liegt Planquadrat D5.')}
+  `;
+  renderMissionPage('Mission 6 · Planquadrate sicher finden', body);
+}
+function missionM7(){
+  const body = `
+    <p>Auf deinen Arbeitsblättern hast du Orte im Stadtplan gesucht und Wege verfolgt. Hier kommt eine neue Karte zum Üben.</p>
+    ${renderRefGrid(M7_COLS, M7_ROWS, M7_POIS, {cell:50, lines:M7_LINES, compass:true})}
+    <div class="legend-mini"><span><i style="background:#3f7ca6"></i>Fluss</span><span><i style="background:#2b2620"></i>Bahnlinie</span><span><i style="background:#c9962c"></i>Wege</span></div>
+    <h3>Aufgaben</h3>
+    ${qCheckHTML('m7q1','missionen',1,'In welchem Planquadrat liegt die Schule?','C1.')}
+    ${qCheckHTML('m7q2','missionen',2,'In welchem Planquadrat liegt das Rathaus?','E3.')}
+    ${qCheckHTML('m7q3','missionen',3,'Was findest du ungefähr in D5?','Den Bahnhof.')}
+    ${qCheckHTML('m7q4','missionen',4,'Welcher Ort liegt in A3?','Das Bad / Schwimmbad.')}
+    ${qCheckHTML('m7q5','missionen',5,'Welche Linie auf der Karte zeigt die Eisenbahn?','Die schwarz gestrichelte Linie oben (Bahnlinie).')}
+    ${qCheckHTML('m7q6','missionen',6,'Zwischen welchen Kartenfeldern führt der Fluss ungefähr hindurch?','Ungefähr durch die Spalten B/C.')}
+    <div class="infobox"><b>Stadtplan-Trick:</b> Suche zuerst das Planquadrat. Erst dann schaust du auf die Details darin. So findest du Orte viel schneller.</div>
+  `;
+  renderMissionPage('Mission 7 · Einen Stadtplan lesen', body);
+}
+function missionMini(){
+  const body = `
+    <p>Das Deckblatt deines Sachkunde-Heftes nennt auch Himmelsrichtungen und Kompass. Hier wiederholen wir kurz das Grundwissen.</p>
+    <div class="compass-wrap">${compassSVG(null)}</div>
+    <div class="infobox">Auf deiner Landkarte: <b>Norden = oben</b>, <b>Süden = unten</b>, <b>Osten = rechts</b>, <b>Westen = links</b>. Ein Kompass hilft bei der Orientierung nach Himmelsrichtungen.</div>
+    <div class="infobox"><b>Maßstab:</b> Die echte Landschaft ist zu groß für ein Blatt Papier. Der Maßstab zeigt, wie stark die Wirklichkeit verkleinert dargestellt wurde.</div>
+    <h3>Kurztest</h3>
+    ${miniMC('mm1','missionen',1,'Auf einer Karte ist Norden normalerweise ...', ['oben','unten','links'], 0)}
+    ${miniMC('mm2','missionen',2,'Osten liegt auf einer üblichen Karte ...', ['links','rechts','unten'], 1)}
+    ${miniMC('mm3','missionen',3,'Der Maßstab erklärt ...', ['wie stark verkleinert wurde','welche Farbe schön ist','wie alt die Karte ist'], 0)}
+    ${miniMC('mm4','missionen',4,'Eine Legende erklärt ...', ['Kartenzeichen','nur Straßennamen','das Wetter'], 0)}
+    ${qCheckHTML('mm5','missionen',5,'Warum braucht man einen Maßstab?','Weil man sonst nicht wüsste, wie groß die echte Landschaft im Vergleich zur Karte wirklich ist.')}
+  `;
+  renderMissionPage('Orientierung, Himmelsrichtungen & Maßstab', body);
+}
+function missionM8(){
+  const body = `
+    <p>Auf deinem Arbeitsblatt wird gezeigt, wie ein Ort aus der Luft fotografiert und danach als Karte dargestellt wird.</p>
+    <table class="wtable"><tr><th>#</th><th>Schritt</th><th>Erklärung</th></tr>
+      <tr><td>1</td><td><b>Schräg aufgenommenes Luftbild</b></td><td>Man erkennt viele Dinge, aber Gebäude können andere Dinge teilweise verdecken.</td></tr>
+      <tr><td>2</td><td><b>Senkrecht von oben aufgenommen</b></td><td>Die Kamera blickt von oben herunter. Dadurch lassen sich Flächen besser miteinander vergleichen.</td></tr>
+      <tr><td>3</td><td><b>Karte</b></td><td>Der Ort wird vereinfacht. Informationen erscheinen als Zeichen, Flächen, Linien und mit Hilfe einer Legende.</td></tr>
+    </table>
+    <h3>Ordne und erkläre</h3>
+    ${qCheckHTML('m8q1','missionen',1,'Bringe in die richtige Reihenfolge: Karte – Senkrechtluftbild – Schrägluftbild.','Schrägluftbild → Senkrechtluftbild → Karte.')}
+    ${qCheckHTML('m8q2','missionen',2,'Welcher Vorteil entsteht, wenn ein Ort senkrecht von oben aufgenommen wird?','Flächen und ihre Lage lassen sich besser miteinander vergleichen, nichts wird verdeckt.')}
+    ${qCheckHTML('m8q3','missionen',3,'Warum wird aus einem Luftbild nicht einfach unverändert eine Karte?','Weil eine Karte die Informationen vereinfacht und mit Zeichen/Legende statt echten Fotodetails darstellt.')}
+    ${qCheckHTML('m8q4','missionen',4,'Nenne vier Dinge, die du auf einem Luftbild oder einer Karte erkennen kannst.','Zum Beispiel: Straßen, Häuser, Wälder, Felder, Flüsse, Gewässer (4 davon reichen).')}
+    <div class="infobox"><b>Profi-Blick:</b> Achte beim Vergleichen immer auf dieselben Orientierungspunkte: große Straßen, Flüsse, auffällige Gebäude, Wälder und die Lage der Dinge zueinander.</div>
+  `;
+  renderMissionPage('Mission 8 · Vom Luftbild zur Karte', body);
+}
+function missionM9(){
+  const body = `
+    <p>Auf deinem Blatt „Orientierung durch Karten" werden verschiedene Kartenarten erklärt.</p>
+    <table class="wtable"><tr><th>Kartenart</th><th>Wofür?</th><th>Was zeigt sie?</th></tr>
+      <tr><td><b>Stadtplan</b></td><td>wenn du eine Stadt erkunden willst</td><td>Straßen, Straßennamen, Sehenswürdigkeiten und wichtige Gebäude</td></tr>
+      <tr><td><b>Straßenkarte / Autokarte</b></td><td>für Autofahrer und Reisende</td><td>Straßenverläufe wie Landstraßen, Bundesstraßen und Autobahnen</td></tr>
+      <tr><td><b>Seekarte</b></td><td>für Kapitäne auf dem Meer</td><td>zum Beispiel Meeresströmungen, Küsten und Untiefen</td></tr>
+      <tr><td><b>Topografische Karte</b></td><td>wenn die Landschaft genau wichtig ist</td><td>Wälder, Wiesen und andere Landschaftsmerkmale; besonders nützlich z. B. für Wanderer</td></tr>
+    </table>
+    <h3>Welche Karte passt?</h3>
+    ${qCheckHTML('m9q1','missionen',1,'Du möchtest in einer Stadt das Rathaus finden.','Stadtplan.')}
+    ${qCheckHTML('m9q2','missionen',2,'Eine Familie plant eine Autofahrt durch Deutschland.','Straßenkarte / Autokarte.')}
+    ${qCheckHTML('m9q3','missionen',3,'Ein Kapitän möchte sich auf dem Meer orientieren.','Seekarte.')}
+    ${qCheckHTML('m9q4','missionen',4,'Ein Wanderer möchte Wälder und Landschaftsformen erkennen.','Topografische Karte.')}
+    ${qCheckHTML('m9q5','missionen',5,'Du möchtest Straßennamen und wichtige Gebäude in einer Stadt suchen.','Stadtplan.')}
+    <div class="infobox"><b>Merksatz:</b> Frage dich zuerst: Was möchte die Person finden oder tun? Daraus ergibt sich meistens schon die richtige Kartenart.</div>
+  `;
+  renderMissionPage('Mission 9 · Welche Karte brauche ich?', body);
+}
+function missionFest(){
+  const rules = [
+    'Eine Karte stellt die Wirklichkeit verkleinert und vereinfacht dar.',
+    'Die Legende / Zeichenerklärung erklärt die Kartenzeichen.',
+    'Oben liegt auf der üblichen Karte Norden, unten Süden.',
+    'Ein Schrägbild zeigt einen Ort schräg von oben.',
+    'Eine Draufsicht zeigt ihn genau von oben.',
+    'Ein Plan benutzt vereinfachte Formen und Kartenzeichen.',
+    'Planquadrate helfen beim schnellen Suchen: Buchstabe zuerst, Zahl danach.',
+    'Der Maßstab zeigt, wie stark die Wirklichkeit verkleinert wurde.',
+    'Ein Luftbild kann Schritt für Schritt zu einer vereinfachten Karte werden.',
+    'Je nach Zweck braucht man unterschiedliche Kartenarten.',
+  ];
+  const body = `
+    <h3 style="margin-top:0;">Die 10 Regeln für die Arbeit</h3>
+    <table class="wtable">${rules.map((r,i)=>`<tr><td style="width:28px; text-align:center;"><b>${i+1}</b></td><td>${r}</td></tr>`).join('')}</table>
+    <h3>60-Sekunden-Check</h3>
+    <p style="font-size:.82rem; color:var(--muted); margin-top:0;">Decke die Regeln oben mit einem Blatt ab. Beantworte jetzt laut.</p>
+    ${qCheckHTML('f1','missionen',1,'Was ist eine Legende?','Die Zeichenerklärung, die die Kartenzeichen erklärt.')}
+    ${qCheckHTML('f2','missionen',2,'Was bedeutet D4?','Spalte D, Zeile 4.')}
+    ${qCheckHTML('f3','missionen',3,'Was ist der Unterschied zwischen Schrägbild und Draufsicht?','Schrägbild: schräg von oben, Seiten sichtbar. Draufsicht: senkrecht von oben, keine Seiten sichtbar.')}
+    ${qCheckHTML('f4','missionen',4,'Nenne drei Kartenzeichen.','Zum Beispiel Kirche, Fluss, Wald (3 beliebige aus dem Heft).')}
+    ${qCheckHTML('f5','missionen',5,'Welche vier Kartenarten kennst du?','Stadtplan, Straßenkarte/Autokarte, Seekarte, Topografische Karte.')}
+    ${qCheckHTML('f6','missionen',6,'Was erklärt ein Maßstab?','Wie stark die Wirklichkeit verkleinert dargestellt wurde.')}
+    <div class="infobox"><b>Bist du bereit?</b> Wenn du mindestens 5 der 6 Fragen ohne Hilfe erklären kannst, geh zur Probe-Arbeit. Wenn nicht: nur die unsicheren Themen noch einmal ansehen.</div>
+    <h3>End-Check</h3>
+    <p style="font-size:.82rem; color:var(--muted); margin-top:0;">Kreuze an, wie sicher du dich jetzt fühlst.</p>
+    ${triTableHTML('end', TRI_ROWS)}
+    <div style="text-align:center; margin-top:10px;"><button class="btn gold" onclick="openModule('probe')">Weiter zur Probe-Arbeit →</button></div>
+  `;
+  renderMissionPage('10 Regeln & Festigen', body);
+  restoreTri('end');
+}
+
+/* ============ PROBE-ARBEIT (schriftliche Mock-Klassenarbeit) ============ */
+let PROBE_TEIL1_SCORE = null;
+function probeHome(){
+  render(`
+    ${topbar('📝 Probe-Arbeit')}
+    <div class="card">
+      <p style="margin-top:0;">Arbeite jetzt wie in der Schule. Schau nicht vorher auf die Lösungen. Lies jede Aufgabe genau.</p>
+      <div class="infobox">Teil 1 hat offene Fragen, Teil 2 nutzt zusätzlich eine Planquadrat-Karte. Am Ende siehst du deine Gesamtpunktzahl.</div>
+      <div style="text-align:center;"><button class="btn" onclick="probeTeil1()">Teil 1 starten →</button></div>
+    </div>
+  `);
+}
+function probeTeil1(){
+  const body = `
+    <span class="pill" style="display:inline-block; margin-bottom:10px;">Teil 1 · offene Fragen, ohne Hilfe</span>
+    ${qCheckHTML('p1','probe',1,'Erkläre in einem Satz, was eine Karte ist.','Eine Karte zeigt die Wirklichkeit verkleinert und vereinfacht dargestellt.',3)}
+    ${qCheckHTML('p2','probe',2,'Wie heißt die Zeichenerklärung auf einer Karte?','Legende / Zeichenerklärung.',1)}
+    ${qCheckHTML('p3','probe',3,'Was zeigt der Maßstab?','Wie stark die Wirklichkeit verkleinert dargestellt wurde.',2)}
+    ${qCheckHTML('p4','probe',4,'Was ist der Unterschied zwischen Schrägbild und Draufsicht?','Schrägbild: schräg von oben, Seiten sichtbar. Draufsicht: senkrecht von oben, keine Seiten sichtbar.',3)}
+    ${qCheckHTML('p5','probe',5,'Was bedeutet Planquadrat C4?','Spalte C, Zeile 4.',2)}
+    ${qCheckHTML('p6','probe',6,'Welche Richtung liegt auf einer üblichen Karte oben?','Norden.',1)}
+    ${qMultiIconCheckHTML('p7','probe',7,['eisenbahn','kirche','nadelwald','weinberg','see','bruecke'],6)}
+    <div style="text-align:center; margin-top:14px;"><button class="btn gold" onclick="finishProbeTeil1()">Weiter zu Teil 2 →</button></div>
+  `;
+  render(`
+    <div class="topbar"><button class="btn secondary" onclick="probeHome()">← Probe-Arbeit</button><h2 class="mod-title" style="margin:0;">Teil 1 – ohne Hilfe</h2><span></span></div>
+    <div class="card">${body}</div>
+  `);
+}
+function finishProbeTeil1(){
+  PROBE_TEIL1_SCORE = computePoints();
+  probeTeil2();
+}
+function probeTeil2(){
+  const body = `
+    <span class="pill" style="display:inline-block; margin-bottom:10px;">Teil 2 · Planquadrate &amp; anwenden</span>
+    ${renderRefGrid(M6_COLS, M6_ROWS, M6_POIS, {cell:40})}
+    ${qCheckHTML('p8','probe',8,'Wo liegt die Kirche?','D2.',1)}
+    ${qCheckHTML('p9','probe',9,'Was liegt in E4?','Schwimmbad.',1)}
+    ${qCheckHTML('p10','probe',10,'In welchem Quadrat liegt die Burg?','B5.',1)}
+    ${qCheckHTML('p11','probe',11,'Wo liegt das Rathaus?','F2.',1)}
+    ${qCheckHTML('p12','probe',12,'Welche Kartenart brauchst du, um Straßennamen und wichtige Gebäude in einer Stadt zu finden?','Stadtplan.',2)}
+    ${qCheckHTML('p13','probe',13,'Welche Kartenart nutzt ein Kapitän auf dem Meer?','Seekarte.',1)}
+    ${qCheckHTML('p14','probe',14,'Welche Karte ist für einen Wanderer besonders nützlich, wenn Landschaften genau dargestellt werden sollen?','Topografische Karte.',2)}
+    ${qCheckHTML('p15','probe',15,'Ordne: Schrägluftbild – Karte – Senkrechtluftbild. Schreibe die richtige Reihenfolge.','Schrägluftbild → Senkrechtluftbild → Karte.',3)}
+    ${qCheckHTML('p16','probe',16,'Warum hilft eine Legende beim Lesen einer Karte?','Sie erklärt die Bedeutung der Kartenzeichen, damit man die Karte richtig versteht.',2)}
+    ${qCheckHTML('p17','probe',17,'Nenne vier Kartenzeichen aus deinen Arbeitsblättern.','Zum Beispiel Eisenbahn, Kirche, Nadelwald, See (vier beliebige aus dem Heft).',4)}
+    <div style="text-align:center; margin-top:14px;"><button class="btn gold" onclick="finishProbe()">Auswertung →</button></div>
+  `;
+  render(`
+    <div class="topbar"><button class="btn secondary" onclick="probeHome()">← Probe-Arbeit</button><h2 class="mod-title" style="margin:0;">Teil 2 – anwenden</h2><span></span></div>
+    <div class="card">${body}</div>
+  `);
+}
+function finishProbe(){
+  const t2 = computePoints();
+  const t1 = PROBE_TEIL1_SCORE || {total:0,max:0};
+  const total = t1.total+t2.total, max = t1.max+t2.max;
+  const p = max ? Math.round(100*total/max) : 0;
+  render(`
+    ${topbar('Ergebnis')}
+    <div class="card">
+      <div class="result-big"><div class="num">${total} / ${max}</div><div class="sub">${p}% – Teil 1: ${t1.total}/${t1.max} · Teil 2: ${t2.total}/${t2.max}</div></div>
+      <div style="text-align:center; margin:14px 0; font-size:1.4rem;">${p>=85?'🌟 Sehr sicher – das wird eine 1!':p>=65?'👍 Gut vorbereitet – Feinschliff reicht.':'💪 Die unsicheren Themen noch einmal in den Missionen üben.'}</div>
+      <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+        <button class="btn secondary" onclick="missionsHome()">Zu den Missionen</button>
         <button class="btn" onclick="screenMenu()">Zum Menü</button>
       </div>
     </div>
